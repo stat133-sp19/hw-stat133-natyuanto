@@ -1,0 +1,152 @@
+---
+title: "Getting Started with Binomial Functions"
+author: "Natasha Yuanto Susetyo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Binomial Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## Binomial Distribution
+
+Binomial distribution is one of the most famous probability distribution among the discrete random variables. 
+The package `"binomial"` is a minimal implementation that contains various functions regarding the binomial distribution.
+
+Assume that X is a random variable such that X ∼ Bin(n, p). 
+
+## Mean and Variance
+
+As with most random variables, it is useful to know about the various summary measures of X.
+The expected value or mean of a binomial distribution is: $$np$$. 
+This is the expected number of successes in n trials.
+
+The variance is given by: $$np(1 − p)$$. 
+Consequently, the standard deviation is simply the square root of the variance, that is: $$\sqrt{np(1 − p)}$$
+
+The function `bin_mean()` will calculate the binomial distribution's mean.
+```{r}
+bin_mean(trials = 5, prob = 0.3) #answer = 1.5
+```
+
+The function `bin_variance()` will calculate the binomial distribution's variance.
+```{r}
+bin_variance(trials = 5, prob = 0.3) #answer = 1.05
+```
+
+### Mode
+
+For $$0 < p < 1$$, the most likely number of success in n independent trials with probability p of success on each trial is m, the greater integer less than or equal to $$np + p$$: 
+
+$$m = int(np + p)$$
+
+where int denotes the integer part function. If $$np + p$$ is an integer, as in the case p = 0.5 and
+n odd, then there are two most likely numbers, m and m − 1. Otherwise, there is a unique
+mode.
+
+The function `bin_mode()` will calculate the binomial distribution's mode.
+```{r}
+bin_mode(trials = 5, prob = 0.3) #answer = 1
+```
+
+### Skewness and Kurtosis
+
+Other two additional measures are skewness and kurtosis. 
+Skewness is a measure of the asymmetry of the probability distribution of a random variable about its mean. 
+The skewness value can be positive or negative, or undefined. 
+The skewness of a binomial random variable can be calculated as:
+
+$$skewness = \dfrac{1 − 2p}{\sqrt{np(1 − p)}}$$
+
+The Kurtosis (from greek kurtos, meaning “curved, arching”) is a measure of the “tailedness” of the probability distribution of a random variable. 
+In a similar way to the concept of skewness, kurtosis is a descriptor of the shape of a probability distribution. 
+For a binomial random variable, its kurtosis can be obtained as:
+
+$$kurtosis = \dfrac{1 − 6p(1-p)}{np(1 − p)}$$
+
+The function `bin_skewness()` will calculate the skewness of the binomial distribution.
+```{r}
+bin_skewness(trials = 5, prob = 0.3) #answer = 0.39036
+```
+
+The function `bin_kurtosis()` will calculate the kurtosis of the binomial distribution.
+```{r}
+bin_kurtosis(trials = 5, prob = 0.3) #answer = -0.247619
+```
+
+## Finding number of combinations
+
+The function `bin_choose()` calculates the number of combinations in which `k` successes occur in `n` trials.
+
+```{r}
+bin_choose(n = 5, k = 2) #answer = 10
+```
+
+## The binomial probability
+
+The function `bin_probability()` calculates probability of getting a certain number successes in the number of desired trials. 
+
+```{r}
+bin_probability(success = 2, trials = 5, prob = 0.5) #answer = 0.3125
+```
+
+## The binomial distribution
+
+We can also calculate the probability of success for each number of successes possible given the number of trials. We will use the `bin_distribution()` function.
+
+```{r}
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+```
+
+## Plot of binomial distribution
+
+We can use the function `plot()` to see the histogram of a binomial distribution for the probability for each number of successes.
+
+```{r}
+plot(dis1)
+```
+
+## The binomial cumulative distribution
+
+We can find the binomial cumulative distribution where it calculates the cummulative probabilities from the previous number of successes using the function `bin_cumulative()`.
+```{r}
+bin2 <- bin_cumulative(trials = 5, prob = 0.5)
+bin2
+```
+
+## Plot of binomial cumulative distribution
+
+We can plot the binomial cumulative distribution graph by using the `plot()` function.
+```{r}
+plot(bin2)
+```
+
+## The binomial variable
+
+The function `bin_variable()` which returns an obejct of class "binvar".
+```{r}
+bin3 <- bin_variable(trials = 10, prob = 0.3)
+bin3
+```
+
+## Print the summary 
+
+The `summary` function can return a list of class "summary.binvar" containing named elements:
+  - trials : number of trials
+  - prob : probability of success
+  - mean : mean or expected value
+  - variance : variance
+  - mode : mode
+  - skewness: skewness
+  - kurtosis : kurtosis
+```{r}
+summary(bin3)
+```
+
