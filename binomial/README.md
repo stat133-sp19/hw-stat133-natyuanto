@@ -1,12 +1,12 @@
 ## Overview
 The "`binomial`" package provides functions to explore the binomial distribution.
-- `bin_variable()` will list the parameters of the binomial distribution.
-- `bin_choose()` will provide the number of combinations for a particular number of successes to occur in a set number of trials.
-- `bin_probability()` will calculate the probability of getting the number of successes specified in the number of desired trials
-- `bin_distribution()` will calculate probabilities of the number of successes in a fixed number of random trials performed under identical conditions
-- `bin_cumulative()` calculates probability distribution and the cumulative probabilities
-- `plot()` will plot the `bin_distribution()` histogram or plot the graph of binomial cumulative distribution of `bin_cumulative()`
-- `summary()` will provide the summary of `bin_variable()` - where it will detail the parameters and measurements of a binomial distribution
+- `bin_variable()`    : list the parameters of the binomial distribution.
+- `bin_choose()`      : provide the number of combinations for a particular number of successes to occur in a set number of trials.
+- `bin_probability()` : calculates the probability of getting the number of successes specified in the number of desired trials
+- `bin_distribution()`: calculate probabilities of the number of successes in a fixed number of random trials performed under identical conditions
+- `bin_cumulative()`  : calculates probability distribution and the cumulative probabilities
+- `plot()`            : plot a `bin_distribution()` histogram or the graph of binomial cumulative distribution of `bin_cumulative()`
+- `summary()`         : provides a summary of `bin_variable()` with details of the parameters and measurements of a binomial distribution
 
 ## Additional Functions
 The "`binomial`" package also includes other functionalities to examine the properties of the binomial distribution, which includes:
