@@ -1,16 +1,21 @@
 Package: binomial
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Binomial Distribution
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Natasha Yuanto Susetyo
+Maintainer: natsusetyo@berkeley.edu
+Description:  Create functions to work with the binomial distribution
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Collate:
+    binomial.R
+    measures.R
+    private-aux.R
+    private-check.R
 Suggests: 
+    testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
